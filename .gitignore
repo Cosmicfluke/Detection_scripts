@@ -1,0 +1,22 @@
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+*.code-workspace
+
+# PowerShell
+*.ps1xml.bak
+*.psd1.bak
+
+# Testing artifacts (in case any local test staging leftovers get created near the repo)
+RP_test*/
+test.txt
+*.tmp
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Snyk / SonarQube local cache/config (avoid committing personal scan settings)
+.snyk
+.sonarlint/
