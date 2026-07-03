@@ -6,22 +6,23 @@ These are **detection scripts, not prevention controls**. They flag behavioral a
 
 ## Scripts
 
-### [rogueplanet-cve-2026-50656/`](./rogueplanet-cve-2026-50656)
+### [`Rogue Planet (CVE-2026-50656)/`](./Rogue%20Planet%20%28CVE-2026-50656%29)
 Detects indicators associated with **CVE-2026-50656 ("RoguePlanet")**, a high-severity elevation of privilege vulnerability in the Microsoft Malware Protection Engine (Microsoft Defender). No vendor patch is currently available.
 
 **Checks for:**
-1. MsMpEng.exe` spawning a shell/interpreter process (highest-confidence signal)
+1. `MsMpEng.exe` spawning a shell/interpreter process (highest-confidence signal)
 2. Staging directories matching the exploit's known naming pattern
 3. Disguised `wermgr.exe` copies, including the alternate data stream (ADS) artifact used by the exploit
 4. The named pipe used by the public proof-of-concept while actively running
 5. Recent unexpected modification of the legitimate `wermgr.exe` (weak/secondary signal)
 
-**Testing status:** Checks 2–4 were validated by staging harmless decoy artifacts and confirming detection. Checks 1 and 5 are validated by code review only: safely reproducing them live would require either triggering a real privilege escalation or modifying a legitimate signed system file, neither of which is worth the risk purely to test a detection rule.
+**Testing status:** Checks 2–4 were validated by staging harmless decoy artifacts and confirming detection. Checks 1 and 5 are validated by code review only — safely reproducing them live would require either triggering a real privilege escalation or modifying a legitimate signed system file, neither of which is worth the risk purely to test a detection rule.
 
 **Sources:**
 - [Integrity360 Security Advisory: CVE-2026-50656](https://insights.integrity360.com/threat-advisories/security-advisory-cve-2026-50656-rogueplanet-microsoft-defender-elevation-of-privilege-vulnerability)
 - Splunk Security Content
 - Picus Security
+- Cyderes / Guardsix
 
 ## Deployment notes
 
