@@ -41,7 +41,7 @@ Note: this script uses a **three-tier exit code** (`0` clean / `1` suspect / `2`
 - Rapid7: [The Chrysalis Backdoor: A Deep Dive into Lotus Blossom's toolkit](https://www.rapid7.com/blog/post/tr-chrysalis-backdoor-dive-into-lotus-blossoms-toolkit/)
 - The Hacker News, Kaspersky Securelist follow-up coverage
 
-See the [full writeup](./Notepad%2B%2B%20supply%20chain%20attack%202025/README.md) in that folder for a plain-language explanation of the attack and what to do if this flags something.
+See the [full writeup](./Notepad%2B%2B%20supply%20chain%20attack%202025/Readme.md) in that folder for a plain-language explanation of the attack and what to do if this flags something.
 
 ## Deployment notes
 
