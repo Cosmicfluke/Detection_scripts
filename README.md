@@ -24,6 +24,25 @@ Detects indicators associated with **CVE-2026-50656 ("RoguePlanet")**, a high-se
 - Picus Security
 - Cyderes / Guardsix
 
+### [`Notepad++ supply chain attack 2025/`](./Notepad%2B%2B%20supply%20chain%20attack%202025)
+Detects artifacts from the **"Chrysalis" backdoor**, delivered via a 2025 hijack of Notepad++'s update infrastructure, attributed with moderate confidence to the Lotus Blossom threat group.
+
+**Checks for:**
+1. A hidden staging folder (`AppData\Roaming\Bluetooth`) dropped by the malicious installer
+2. The three files known to be dropped there — `BluetoothService.exe`, `log.dll`, and the extensionless `BluetoothService` (the actual encrypted payload)
+3. SHA256 hash matches against Rapid7's full published IOC list (16 known-bad hashes across the installer, loader, and shellcode variants)
+4. Whether the staging folder carries the Hidden attribute, matching the installer's known behavior
+
+Note: this script uses a **three-tier exit code** (`0` clean / `1` suspect / `2` confirmed) rather than the binary `0`/`1` used elsewhere in this repo — see that script's own README for details.
+
+**Testing status:** hashes verified as correctly formatted and copied directly from Rapid7's published table (an earlier draft had several malformed/mistyped hashes that would have silently never matched anything). Script executes cleanly end-to-end. The hash-match logic itself has not yet been tested against a deliberately staged matching file.
+
+**Sources:**
+- Rapid7: [The Chrysalis Backdoor: A Deep Dive into Lotus Blossom's toolkit](https://www.rapid7.com/blog/post/tr-chrysalis-backdoor-dive-into-lotus-blossoms-toolkit/)
+- The Hacker News, Kaspersky Securelist follow-up coverage
+
+See the [full writeup](./Notepad%2B%2B%20supply%20chain%20attack%202025/README.md) in that folder for a plain-language explanation of the attack and what to do if this flags something.
+
 ## Deployment notes
 
 - Designed to run as **SYSTEM** via an RMM (NinjaOne in our case) on a recurring schedule.
