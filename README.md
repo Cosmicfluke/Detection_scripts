@@ -2,7 +2,7 @@
 
 A collection of PowerShell detection scripts for actively exploited or high-risk vulnerabilities, built for deployment via RMM tooling (NinjaOne) across Windows endpoint fleets.
 
-These are **detection scripts, not prevention controls**. They flag behavioral artifacts associated with known exploitation techniques so you can respond quickly — they don't stop an exploit from running.
+These are **detection scripts, not prevention controls**. They flag behavioral artifacts associated with known exploitation techniques so you can respond quickly they don't stop an exploit from running.
 
 ## Scripts
 
@@ -16,7 +16,7 @@ Detects indicators associated with **CVE-2026-50656 ("RoguePlanet")**, a high-se
 4. The named pipe used by the public proof-of-concept while actively running
 5. Recent unexpected modification of the legitimate `wermgr.exe` (weak/secondary signal)
 
-**Testing status:** Checks 2–4 were validated by staging harmless decoy artifacts and confirming detection. Checks 1 and 5 are validated by code review only — safely reproducing them live would require either triggering a real privilege escalation or modifying a legitimate signed system file, neither of which is worth the risk purely to test a detection rule.
+**Testing status:** Checks 2–4 were validated by staging harmless decoy artifacts and confirming detection. Checks 1 and 5 are validated by code review only, safely reproducing them live would require either triggering a real privilege escalation or modifying a legitimate signed system file, neither of which is worth the risk purely to test a detection rule.
 
 **Sources:**
 - [Integrity360 Security Advisory: CVE-2026-50656](https://insights.integrity360.com/threat-advisories/security-advisory-cve-2026-50656-rogueplanet-microsoft-defender-elevation-of-privilege-vulnerability)
@@ -29,7 +29,7 @@ Detects artifacts from the **"Chrysalis" backdoor**, delivered via a 2025 hijack
 
 **Checks for:**
 1. A hidden staging folder (`AppData\Roaming\Bluetooth`) dropped by the malicious installer
-2. The three files known to be dropped there — `BluetoothService.exe`, `log.dll`, and the extensionless `BluetoothService` (the actual encrypted payload)
+2. The three files known to be dropped there: `BluetoothService.exe`, `log.dll`, and the extensionless `BluetoothService` (the actual encrypted payload)
 3. SHA256 hash matches against Rapid7's full published IOC list (16 known-bad hashes across the installer, loader, and shellcode variants)
 4. Whether the staging folder carries the Hidden attribute, matching the installer's known behavior
 
@@ -52,7 +52,7 @@ See the [full writeup](./Notepad%2B%2B%20supply%20chain%20attack%202025/Readme.m
 
 ## Disclaimer
 
-Provided as-is, with no warranty of any kind. These scripts are shared for the benefit of other defenders responding to the same threats — **test in your own environment before deploying to production.** Detection logic is based on publicly available research at the time of writing and may not catch every variant of a given exploit, especially as attackers adapt.
+Provided as-is, with no warranty of any kind. These scripts are shared for the benefit of other defenders responding to the same threats **test in your own environment before deploying to production.** Detection logic is based on publicly available research at the time of writing and may not catch every variant of a given exploit, especially as attackers adapt.
 
 ## Contributing / feedback
 
