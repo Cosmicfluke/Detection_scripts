@@ -46,7 +46,7 @@ See the [full writeup](./Notepad%2B%2B%20supply%20chain%20attack%202025/Readme.m
 ## Deployment notes
 
 - Designed to run as **SYSTEM** via an RMM (NinjaOne in our case) on a recurring schedule.
-- Exit code `0` = clean, exit code `1` = one or more findings — check the script's stdout output for details.
+- Exit code `0` = clean, exit code `1` = one or more findings check the script's stdout output for details.
 - Polling interval matters: some indicators (like open named pipes) are only present for seconds while an exploit is actively running. Tighter intervals catch more; balance against endpoint load.
 - These scripts are **detection only**. Where available, pair with a validated prevention control (e.g., WDAC/AppLocker in enforced mode for RoguePlanet) and standard patch management.
 
